@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { HelloRoutingModule } from './hello-routing.module';
 import { HelloComponent } from './hello.component';
+import { ToursComponentComponent } from './tours-component/tours-component.component';
+import { HeadingComponentComponent } from './heading-component/heading-component.component';
 
 @NgModule({
   declarations: [
-    HelloComponent
+    HelloComponent,
+    ToursComponentComponent,
+    HeadingComponentComponent
   ],
   imports: [
     BrowserModule,
     HelloRoutingModule
   ],
   providers: [],
-  bootstrap: [HelloComponent]
+  bootstrap: [ToursComponentComponent]
 })
 export class MainModule { }

@@ -10,4 +10,13 @@ export class HelloComponent {
   name = '';
   surname = 'Kowalski';
   onEnter(value: string) { this.name = value; }
+  tabliczka(array1: string[], array2: number[]): string {
+    let result = '';
+    for (let a of array1) {
+      for (let b of array2) {
+        result += a + b + ' ';
+      }
+    }
+    return result;
+  }
 }

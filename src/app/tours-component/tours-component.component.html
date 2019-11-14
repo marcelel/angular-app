@@ -1,0 +1,18 @@
+<app-heading-component>
+</app-heading-component>
+<ul>
+  <li *ngFor="let tour of tours">
+    <img [src]="tour.photoLink" style="border-radius: 50%; max-width: 600px;"> <br/>
+    {{tour.name}} <br/>
+    Kraj: {{tour.country}} <br/>
+    Data rozpoczecia: {{tour.startDate.toLocaleString()}} <br/>
+    Data zakonczenia: {{tour.endDate.toLocaleString()}} <br/>
+    Cena: {{tour.price}} <br/>
+    Max ilosc miejsc: {{tour.maxAmount}} <br/>
+    Wolne miejsca: {{tour.availableAmount != 0 ? tour.availableAmount : 'Brak miejsc'}} <br/>
+    Opis: {{tour.description}} <br/>
+    <a href="{{tour.photoLink}}">Link do zdjecia</a><br/>
+    <button [ngStyle]="{'visibility': getPlusButtonStyle(tour)}" (click)="plusButton(tour)">+</button>
+    <button [ngStyle]="{'visibility': getMinusButtonStyle(tour)}" (click)="minusButton(tour)">-</button>
+  </li>
+</ul>
