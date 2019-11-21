@@ -1,5 +1,6 @@
 <app-heading-component>
 </app-heading-component>
+<app-new-tour (newTourEmitter)="onTourAdded($event)"></app-new-tour>
 <app-tour *ngFor="let tour of getProducts()"
           [tour]="tour"
           (tourRemovedEmitter)="onTourRemoved($event)">

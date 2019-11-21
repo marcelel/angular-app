@@ -16,10 +16,14 @@ export class ToursComponent implements OnInit {
   }
 
   getProducts() {
-    return  this.toursService.getProducts();
+    return this.toursService.getProducts();
   }
 
   onTourRemoved(tour: Tour) {
     this.toursService.deleteProduct(tour);
+  }
+
+  onTourAdded(tour: Tour) {
+    this.toursService.addProduct(tour);
   }
 }

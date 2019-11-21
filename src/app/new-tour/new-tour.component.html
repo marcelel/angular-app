@@ -1,0 +1,13 @@
+<form [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
+  <label>nazwa: </label><input name="name" formControlName="name"><br/>
+  <label>kraj: </label><input name="country" formControlName="country"><br/>
+  <label>data rozpoczecia: </label><input name="startDate" formControlName="startDate"><br/>
+  <label>Data zakonczenia: </label><input name="endDate" formControlName="endDate"><br/>
+  <label>Cena: </label><input name="price" formControlName="price"><br/>
+  <label>Max ilosc: </label><input name="maxAmount" formControlName="maxAmount"><br/>
+  <label>Wolne miejsca: </label><input name="availableAmount" formControlName="availableAmount"><br/>
+  <label>Opis: </label><input name="description" formControlName="description"><br/>
+  <label>Link do zdjecia: </label><input name="photoLink" formControlName="photoLink"><br/>
+
+  <button type="submit">Send</button>
+</form>

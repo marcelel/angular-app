@@ -50,6 +50,7 @@ export class ToursService {
   // }
 
   addProduct(tour: Tour) {
+    tour.rates = [];
     this.tours.push(tour);
   }
 

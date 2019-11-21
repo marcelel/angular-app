@@ -8,6 +8,8 @@ import { HeadingComponent } from './heading-component/heading.component';
 import { TourComponent } from './tour/tour.component';
 import { RateComponent } from './rate/rate.component';
 import { RatesComponent } from './rates/rates.component';
+import { NewTourComponent } from './new-tour/new-tour.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,11 @@ import { RatesComponent } from './rates/rates.component';
     HeadingComponent,
     TourComponent,
     RateComponent,
-    RatesComponent
+    RatesComponent,
+    NewTourComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HelloRoutingModule
   ],
