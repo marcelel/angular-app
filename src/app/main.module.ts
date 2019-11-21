@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HelloRoutingModule } from './hello-routing.module';
 import { HelloComponent } from './hello.component';
-import { ToursComponent } from './tours-component/tours.component';
+import { ToursComponent } from './tours/tours.component';
 import { HeadingComponent } from './heading-component/heading.component';
 import { TourComponent } from './tour/tour.component';
 import { RateComponent } from './rate/rate.component';

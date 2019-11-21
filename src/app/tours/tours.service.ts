@@ -1,13 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-tours-component',
-  templateUrl: './tours.component.html',
-  styleUrls: ['./tours.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class ToursComponent implements OnInit {
+export class ToursService {
 
-  tours = [
+  private tours = [
     {
       name: 'Wycieczka do Turcji',
       country: 'Turcja',
@@ -41,10 +39,21 @@ export class ToursComponent implements OnInit {
     }
   ];
 
-  ngOnInit() {
+  constructor() { }
+
+  getProducts(): Tour[] {
+    return this.tours;
   }
 
-  onTourRemoved(tour: Tour) {
+  // getProduct(): Tour[] {
+  //   return this.tours;
+  // }
+
+  addProduct(tour: Tour) {
+    this.tours.push(tour);
+  }
+
+  deleteProduct(tour: Tour) {
     const index = this.tours.indexOf(tour);
     if (index > -1) {
       this.tours.splice(index, 1);
