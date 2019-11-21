@@ -1,0 +1,9 @@
+Oceny: <br/>
+<app-rate *ngFor="let rate of rates"
+          [rate]="rate">>
+</app-rate>
+Dodaj ocene <br/>
+  <input type="radio" name="gender" value="1" (click)="setRate(1)">1<br/>
+  <input type="radio" name="gender" value="2" (click)="setRate(2)">2<br/>
+  <input type="radio" name="gender" value="3" (click)="setRate(3)">3<br/>
+  <input type="submit" value="Submit" (click)="addRate()"><br/>

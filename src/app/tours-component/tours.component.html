@@ -1,0 +1,6 @@
+<app-heading-component>
+</app-heading-component>
+<app-tour *ngFor="let tour of tours"
+          [tour]="tour"
+          (tourRemovedEmitter)="onTourRemoved($event)">
+</app-tour>

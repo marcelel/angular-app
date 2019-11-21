@@ -3,20 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { HelloRoutingModule } from './hello-routing.module';
 import { HelloComponent } from './hello.component';
-import { ToursComponentComponent } from './tours-component/tours-component.component';
-import { HeadingComponentComponent } from './heading-component/heading-component.component';
+import { ToursComponent } from './tours-component/tours.component';
+import { HeadingComponent } from './heading-component/heading.component';
+import { TourComponent } from './tour/tour.component';
+import { RateComponent } from './rate/rate.component';
+import { RatesComponent } from './rates/rates.component';
 
 @NgModule({
   declarations: [
     HelloComponent,
-    ToursComponentComponent,
-    HeadingComponentComponent
+    ToursComponent,
+    HeadingComponent,
+    TourComponent,
+    RateComponent,
+    RatesComponent
   ],
   imports: [
     BrowserModule,
     HelloRoutingModule
   ],
   providers: [],
-  bootstrap: [ToursComponentComponent]
+  bootstrap: [ToursComponent]
 })
 export class MainModule { }
