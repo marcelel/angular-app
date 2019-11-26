@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {CartService} from '../cart/cart.service';
 
 @Component({
   selector: 'app-tour',
@@ -10,7 +11,7 @@ export class TourComponent implements OnInit {
   @Input() tour: Tour;
   @Output() tourRemovedEmitter = new EventEmitter<Tour>();
 
-  constructor() {
+  constructor(private cartService: CartService) {
   }
 
   ngOnInit() {
@@ -20,12 +21,16 @@ export class TourComponent implements OnInit {
     if (this.tour.availableAmount > 0) {
       this.tour.availableAmount -= 1;
     }
+
+    this.cartService.addTour(this.tour);
   }
 
   returnReservation() {
     if (this.tour.availableAmount < this.tour.maxAmount) {
       this.tour.availableAmount += 1;
     }
+
+    this.cartService.removeTour(this.tour);
   }
 
   removeTour() {

@@ -10,6 +10,8 @@ import { RateComponent } from './rate/rate.component';
 import { RatesComponent } from './rates/rates.component';
 import { NewTourComponent } from './new-tour/new-tour.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
+import {ToursService} from './tours/tours.service';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,15 @@ import {ReactiveFormsModule} from '@angular/forms';
     TourComponent,
     RateComponent,
     RatesComponent,
-    NewTourComponent
+    NewTourComponent,
+    CartComponent
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
     HelloRoutingModule
   ],
-  providers: [],
+  providers: [ToursService],
   bootstrap: [HelloComponent]
 })
 export class MainModule { }

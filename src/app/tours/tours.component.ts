@@ -20,10 +20,7 @@ export class ToursComponent implements OnInit {
 
   onTourRemoved(tour: Tour) {
     this.toursService.deleteProduct(tour);
-    const index = this.tours.indexOf(tour);
-    if (index > -1) {
-      this.tours.splice(index, 1);
-    }
+    this.tours = this.toursService.getProducts();
   }
 
   onTourAdded(tour: Tour) {
