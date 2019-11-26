@@ -8,22 +8,26 @@ import {ToursService} from './tours.service';
 })
 export class ToursComponent implements OnInit {
 
+  tours: Tour[];
+
   constructor(private toursService: ToursService) {
+    this.tours = [];
   }
 
   ngOnInit() {
-    this.toursService.getProducts();
-  }
-
-  getProducts() {
-    return this.toursService.getProducts();
+    this.tours = this.toursService.getProducts();
   }
 
   onTourRemoved(tour: Tour) {
     this.toursService.deleteProduct(tour);
+    const index = this.tours.indexOf(tour);
+    if (index > -1) {
+      this.tours.splice(index, 1);
+    }
   }
 
   onTourAdded(tour: Tour) {
     this.toursService.addProduct(tour);
+    this.tours.push(tour);
   }
 }

@@ -27,6 +27,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     HelloRoutingModule
   ],
   providers: [],
-  bootstrap: [ToursComponent]
+  bootstrap: [HelloComponent]
 })
 export class MainModule { }
