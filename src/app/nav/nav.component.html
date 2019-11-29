@@ -7,6 +7,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/tours">Tours</a>
       <a mat-list-item routerLink="/cart">Cart</a>
+      <a mat-list-item routerLink="/new-tour">New tour</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -19,7 +20,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>angular-app</span>
+      <span>Tour company</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

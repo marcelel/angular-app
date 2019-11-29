@@ -1,4 +1,3 @@
-<app-new-tour (newTourEmitter)="onTourAdded($event)"></app-new-tour>
 <app-tour *ngFor="let tour of tours"
           [tour]="tour"
           (tourRemovedEmitter)="onTourRemoved($event)">

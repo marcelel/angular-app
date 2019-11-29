@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ToursService} from '../tours/tours.service';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from './cart.service';
 
 @Component({
