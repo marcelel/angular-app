@@ -1,14 +1,29 @@
-<img [src]="tour.photoLink" style="border-radius: 50%; max-width: 600px;" routerLink="/tours/{{tour.id}}"> <br/>
-{{tour.name}} <br/>
-Kraj: {{tour.country}} <br/>
-Data rozpoczecia: {{tour.startDate.toLocaleString()}} <br/>
-Data zakonczenia: {{tour.endDate.toLocaleString()}} <br/>
-Cena: {{tour.price}} <br/>
-Max ilosc miejsc: {{tour.maxAmount}} <br/>
-Wolne miejsca: {{tour.availableAmount != 0 ? tour.availableAmount : 'Brak miejsc'}} <br/>
-Opis: {{tour.description}} <br/>
-<a href="{{tour.photoLink}}">Link do zdjecia</a><br/>
-<button [ngStyle]="{'visibility': getPlusButtonStyle()}" (click)="makeReservation()()">+</button>
-<button [ngStyle]="{'visibility': getMinusButtonStyle()}" (click)="returnReservation()">-</button><br/>
-<button (click)="removeTour()">Remove</button><br/>
-<app-rates [rates]="tour.rates" (rateAddedEmitter)="onRateAdded($event)"></app-rates>
+<!--<img [src]="tour.photoLink" style="border-radius: 50%; max-width: 600px;" routerLink="/tours/{{tour.id}}"> <br/>-->
+<!--{{tour.name}} <br/>-->
+<!--Kraj: {{tour.country}} <br/>-->
+<!--Data rozpoczecia: {{tour.startDate.toLocaleString()}} <br/>-->
+<!--Data zakonczenia: {{tour.endDate.toLocaleString()}} <br/>-->
+<!--Cena: {{tour.price}} <br/>-->
+<!--Max ilosc miejsc: {{tour.maxAmount}} <br/>-->
+<!--Wolne miejsca: {{tour.availableAmount != 0 ? tour.availableAmount : 'Brak miejsc'}} <br/>-->
+<!--Opis: {{tour.description}} <br/>-->
+<!--<a href="{{tour.photoLink}}">Link do zdjecia</a><br/>-->
+<!--<button [ngStyle]="{'visibility': getPlusButtonStyle()}" (click)="makeReservation()()">+</button>-->
+<!--<button [ngStyle]="{'visibility': getMinusButtonStyle()}" (click)="returnReservation()">-</button><br/>-->
+<!--<button (click)="removeTour()">Remove</button><br/>-->
+<!--<app-rates [rates]="tour.rates" (rateAddedEmitter)="onRateAdded($event)"></app-rates>-->
+
+<mat-card class="dashboard-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{tour.name}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{tour.description}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{tour.photoLink}}" alt="{{tour.name}}" class="image" routerLink="/tours/{{tour.id}}">
+  <mat-card-content class="dashboard-card-content">
+    <div><b>Price</b>: {{tour.price}} PLN</div>
+  </mat-card-content>
+</mat-card>

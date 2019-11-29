@@ -18,7 +18,7 @@ import {
   MatIconModule,
   MatListModule,
   MatMenuModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSliderModule,
   MatToolbarModule
 } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
@@ -27,6 +27,14 @@ import { TourDetailsComponent } from './tour-details/tour-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { AddressFormComponent } from './address-form/address-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { ToursDashboardComponent } from './tours-dashboard/tours-dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -39,7 +47,9 @@ import { InMemoryDataService } from './in-memory-data.service';
     NewTourComponent,
     CartComponent,
     NavComponent,
-    TourDetailsComponent
+    TourDetailsComponent,
+    AddressFormComponent,
+    ToursDashboardComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -55,8 +65,15 @@ import { InMemoryDataService } from './in-memory-data.service';
     LayoutModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false, delay: 0 }
-    )
+      InMemoryDataService, {dataEncapsulation: false, delay: 0}
+    ),
+    MatSliderModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatGridListModule
   ],
   providers: [ToursService],
   bootstrap: [HelloComponent]

@@ -22,6 +22,19 @@ export class InMemoryDataService implements InMemoryDbService {
         rates: []
       },
       {
+        id: 11,
+        name: 'Wycieczka do Turcji',
+        country: 'Turcja',
+        startDate: new Date(),
+        endDate: new Date(),
+        price: 2000,
+        maxAmount: 10,
+        availableAmount: 10,
+        description: 'Super wycieczka',
+        photoLink: 'https://www.sunfun.pl/images/content/country/turcja__w1160h520-scr_1294f4.jpg',
+        rates: []
+      },
+      {
         id: 12,
         name: 'Wycieczka do Grecji',
         country: 'Grecja',

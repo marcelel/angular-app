@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ToursService} from './tours.service';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-tours-component',
@@ -9,8 +11,11 @@ import {ToursService} from './tours.service';
 export class ToursComponent implements OnInit {
 
   tours: Tour[];
+  rows = this.breakpointObserver.observe('(max-width: 1200px)').pipe(
+    map(({ matches }) => matches ? 1 : 3)
+  );
 
-  constructor(private toursService: ToursService) {
+  constructor(private toursService: ToursService, private breakpointObserver: BreakpointObserver) {
     this.tours = [];
   }
 
