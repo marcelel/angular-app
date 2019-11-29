@@ -12,6 +12,21 @@ import { NewTourComponent } from './new-tour/new-tour.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import {ToursService} from './tours/tours.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
+import { NavComponent } from './nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { TourDetailsComponent } from './tour-details/tour-details.component';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -22,12 +37,26 @@ import {ToursService} from './tours/tours.service';
     RateComponent,
     RatesComponent,
     NewTourComponent,
-    CartComponent
+    CartComponent,
+    NavComponent,
+    TourDetailsComponent
   ],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
-    HelloRoutingModule
+    HelloRoutingModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
+    LayoutModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false, delay: 0 }
+    )
   ],
   providers: [ToursService],
   bootstrap: [HelloComponent]

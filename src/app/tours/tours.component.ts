@@ -15,16 +15,18 @@ export class ToursComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tours = this.toursService.getProducts();
+    this.toursService.getTours().subscribe(tours => this.tours = tours);
   }
 
   onTourRemoved(tour: Tour) {
-    this.toursService.deleteProduct(tour);
-    this.tours = this.toursService.getProducts();
+    const index = this.tours.indexOf(tour);
+    if (index > -1) {
+      this.tours.splice(index, 1);
+    }
+    this.toursService.deleteTour(tour);
   }
 
   onTourAdded(tour: Tour) {
-    this.toursService.addProduct(tour);
-    this.tours.push(tour);
+    this.toursService.addTour(tour).subscribe(newTour => this.tours.push(newTour));
   }
 }

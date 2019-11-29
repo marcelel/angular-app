@@ -1,63 +1,38 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToursService {
 
-  private tours = [
-    {
-      name: 'Wycieczka do Turcji',
-      country: 'Turcja',
-      startDate: new Date(),
-      endDate: new Date(),
-      price: 2000,
-      maxAmount: 10,
-      availableAmount: 10,
-      description: 'Super wycieczka',
-      photoLink: 'https://www.sunfun.pl/images/content/country/turcja__w1160h520-scr_1294f4.jpg',
-      rates: []
-    },
-    {
-      name: 'Wycieczka do Grecji',
-      country: 'Grecja',
-      startDate: new Date(),
-      endDate: new Date(),
-      price: 2500,
-      maxAmount: 5,
-      availableAmount: 5,
-      description: 'Super wycieczka',
-      photoLink: 'https://i.wpimg.pl/O/644x430/d.wpimg.pl/789201725--821815787/santorini.jpg',
-      rates: [
-        {
-          value: 3
-        },
-        {
-          value: 2
-        }
-      ]
-    }
-  ];
+  private toursUrl = 'api/tours';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
-  constructor() { }
-
-  getProducts(): Tour[] {
-    return this.tours;
+  constructor(private http: HttpClient) {
   }
 
-  // getProduct(): Tour[] {
-  //   return this.tours;
-  // }
+  getTours(): Observable<Tour[]> {
+    return this.http.get<Tour[]>(this.toursUrl);
+  }
 
-  addProduct(tour: Tour) {
+  getTour(id): Observable<Tour> {
+    return this.http.get<Tour>(this.toursUrl + '/' + id);
+  }
+
+  addTour(tour: Tour): Observable<Tour> {
     tour.rates = [];
-    this.tours.push(tour);
+    return this.http.post<Tour>(this.toursUrl, tour, this.httpOptions).pipe(
+      tap((newTour) => console.log(`added hero w/ id=${newTour.id}`))
+      // catchError(err => of('{tour}' as Tour))
+    );
   }
 
-  deleteProduct(tour: Tour) {
-    const index = this.tours.indexOf(tour);
-    if (index > -1) {
-      this.tours.splice(index, 1);
-    }
+  deleteTour(tour: Tour) {
+    return this.http.delete<Tour>(this.toursUrl + '/' + tour.id, this.httpOptions);
   }
 }
