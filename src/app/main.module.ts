@@ -32,7 +32,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import { ToursDashboardComponent } from './tours-dashboard/tours-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -72,7 +71,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    FlexLayoutModule,
     MatGridListModule
   ],
   providers: [ToursService],
