@@ -1,28 +1,49 @@
 import {Injectable} from '@angular/core';
+import {ToursService} from '../tours/tours.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private tours: Tour[];
+  private reservations: CartTourReservation[];
 
-  constructor() {
-    this.tours = [];
+  constructor(private toursService: ToursService) {
+    this.reservations = [];
   }
 
-  getTours() {
-    return this.tours;
+  getReservations() {
+    return this.reservations;
   }
 
-  addTour(tour: Tour) {
-    this.tours.push(tour);
+  addReservation(reservation: CartTourReservation) {
+    this.reservations.push(reservation);
   }
 
-  removeTour(tour: Tour) {
-    const index = this.tours.indexOf(tour);
+  removeReservation(reservation: CartTourReservation) {
+    this.removeReservationFromCart(reservation);
+    this.removeReservationFromTour(reservation);
+  }
+
+  private removeReservationFromCart(reservation: CartTourReservation) {
+    const index = this.reservations.findIndex(r => r.id === reservation.id);
     if (index > -1) {
-      this.tours.splice(index, 1);
+      this.reservations.splice(index, 1);
     }
+  }
+
+  private removeReservationFromTour(reservation: CartTourReservation) {
+    let tour;
+    this.toursService.getTour(reservation.tourId).subscribe(t => tour = t);
+    if (tour != null) {
+      const term = tour.terms.find(t => t.id === reservation.tourTermId);
+      if (term != null) {
+        const index = term.reservations.findIndex(r => r.id === reservation.id);
+        if (index > -1) {
+          term.reservations.splice(index, 1);
+        }
+      }
+    }
+    this.toursService.editTour(tour).subscribe();
   }
 }

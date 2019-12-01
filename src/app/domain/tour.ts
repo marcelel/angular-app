@@ -8,5 +8,5 @@ interface Tour {
   mainPhotoLink: string;
   photoLinks: string[];
   rates: Rate[];
-  tourTerms: TourTerm[];
+  terms: TourTerm[];
 }

@@ -14,7 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import {ToursService} from './tours/tours.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCheckboxModule,
+  MatButtonModule, MatCheckboxModule, MatExpansionModule,
   MatIconModule,
   MatListModule,
   MatMenuModule,
@@ -78,7 +78,8 @@ import { BarRatingModule } from "ngx-bar-rating";
     MatCarouselModule,
     MatCheckboxModule,
     RatingModule,
-    BarRatingModule
+    BarRatingModule,
+    MatExpansionModule
   ],
   providers: [ToursService],
   bootstrap: [HelloComponent]

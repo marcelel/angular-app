@@ -1,21 +1,14 @@
 <div style="padding-top: 10px;">
-  <b>Rate:&nbsp;</b> {{calculateMediumRate()}}
-  <star-rating value="{{calculateMediumRate()}}"
-               checkedcolor="black"
-               uncheckedcolor="grey"
-               size="30px"
-               readonly="true">
-  </star-rating>
-  <bar-rating [(rate)]="mediumRate" [max]="5"></bar-rating>
+  <b>Rate:&nbsp;</b>
+  <bar-rating [(rate)]="mediumRate"
+              [max]="5"
+              readOnly="true">
+  </bar-rating>
 </div>
 
 <div style="padding-top: 10px;">
   <b>Add rate:&nbsp;</b>
-  <star-rating value="0"
-               checkedcolor="black"
-               uncheckedcolor="grey"
-               size="30px"
-               readonly="false"
-               (rate)="addRate($event)">
-  </star-rating>
+  <bar-rating [max]="5"
+              (rateChange)="addRate($event)">
+  </bar-rating>
 </div>

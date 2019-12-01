@@ -8,13 +8,30 @@ import {CartService} from './cart.service';
 })
 export class CartComponent implements OnInit {
 
-  tours: Tour[];
+  reservations: CartTourReservation[];
 
   constructor(private cartService: CartService) {
-    this.tours = [];
+    this.reservations = [];
   }
 
   ngOnInit() {
-    this.tours = this.cartService.getTours();
+    this.reservations = this.cartService.getReservations();
   }
+
+  getPriceForReservation(reservation: CartTourReservation) {
+    return reservation.amount * reservation.price;
+  }
+
+  getTotalPrice() {
+    return this.reservations != null && this.reservations.length !== 0
+      ? this.reservations.map(reservation => this.getPriceForReservation(reservation)).reduce((acc, price) => acc + price)
+      : 0;
+  }
+
+  removeTourReservation(reservation: CartTourReservation) {
+    this.cartService.removeReservation(reservation);
+    this.reservations = this.cartService.getReservations();
+    this.ngOnInit();
+  }
+  // todo: filter users reservations
 }

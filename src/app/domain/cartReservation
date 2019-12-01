@@ -1,7 +1,6 @@
-interface TourReservation {
+interface CartReservation {
 
   id: number;
   tourId: number;
   tourTermId: number;
-  amount: number;
 }

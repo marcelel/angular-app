@@ -19,12 +19,19 @@
   <mat-grid-tile><b>Available</b></mat-grid-tile>
   <mat-grid-tile></mat-grid-tile>
 
-  <div *ngFor="let tourTerm of tour.tourTerms">
-    <mat-grid-tile>{{tourTerm.startDate}}</mat-grid-tile>
-    <mat-grid-tile>{{tourTerm.endDate}}</mat-grid-tile>
-    <mat-grid-tile>{{tourTerm.maxAmount}}</mat-grid-tile>
-    <mat-grid-tile>{{tourTerm.availableAmount}}</mat-grid-tile>
-    <mat-grid-tile><button mat-stroked-button>Book</button></mat-grid-tile>
+  <div *ngFor="let term of tour.terms">
+    <mat-grid-tile>{{term.startDate | date}}</mat-grid-tile>
+    <mat-grid-tile>{{term.endDate | date}}</mat-grid-tile>
+    <mat-grid-tile>{{term.maxAmount}}</mat-grid-tile>
+    <mat-grid-tile>{{getAvailableTermAmount(term)}}</mat-grid-tile>
+    <mat-grid-tile>
+      <div *ngIf="isReservationAvailable(term);">
+        <button mat-stroked-button (click)="book(term)">Book</button>
+      </div>
+      <div *ngIf="!isReservationAvailable(term);">
+        <button mat-stroked-button disabled>Book</button>
+      </div>
+    </mat-grid-tile>
   </div>
 </mat-grid-list>
 

@@ -32,12 +32,11 @@ export class ToursService {
     );
   }
 
-  editTour(tour: Tour): Observable<Tour> {
+  editTour(tour: Tour): Observable<any> {
     return this.http.put<Tour>(this.toursUrl, tour, this.httpOptions);
-
   }
 
-  deleteTour(tour: Tour) {
+  deleteTour(tour: Tour): Observable<Tour> {
     return this.http.delete<Tour>(this.toursUrl + '/' + tour.id, this.httpOptions);
   }
 }

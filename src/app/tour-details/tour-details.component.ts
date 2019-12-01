@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ToursService} from '../tours/tours.service';
 import {CartService} from '../cart/cart.service';
+import {v4 as uuid} from 'uuid';
 
 @Component({
   selector: 'app-tour-details',
@@ -22,21 +23,36 @@ export class TourDetailsComponent implements OnInit {
     this.toursService.getTour(id).subscribe(tour => this.tour = tour);
   }
 
-  // makeReservation() {
-  //   if (this.tour.availableAmount > 0) {
-  //     this.tour.availableAmount -= 1;
-  //   }
-  //
-  //   this.cartService.addTour(this.tour);
-  // }
+  book(term: TourTerm) {
+    if (this.isReservationAvailable(term)) {
+      if (term.reservations == null) {
+        term.reservations = [];
+      }
 
-  // returnReservation() {
-  //   if (this.tour.availableAmount < this.tour.maxAmount) {
-  //     this.tour.availableAmount += 1;
-  //   }
-  //
-  //   this.cartService.removeTour(this.tour);
-  // }
+      const reservation = {id: uuid(), tourId: term.tourId, tourTermId: term.id, amount: 1}; // todo: remove id
+      term.reservations.push(reservation);
+      this.toursService.editTour(this.tour).subscribe();
+      const cartReservation = {
+        id: reservation.id,
+        tourId: reservation.tourId,
+        tourTermId: reservation.tourTermId,
+        amount: reservation.amount,
+        price: this.tour.price,
+        name: this.tour.name,
+        startDate: term.startDate,
+        endDate: term.endDate
+      };
+      this.cartService.addReservation(cartReservation);
+    }
+  }
+
+  getAvailableTermAmount(term: TourTerm) {
+    return term.reservations != null ? term.maxAmount - term.reservations.length : term.maxAmount;
+  }
+
+  isReservationAvailable(term: TourTerm) {
+    return this.getAvailableTermAmount(term) !== 0;
+  }
 
   removeTour() {
     this.toursService.deleteTour(this.tour).subscribe();
