@@ -14,7 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import {ToursService} from './tours/tours.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCheckboxModule,
   MatIconModule,
   MatListModule,
   MatMenuModule,
@@ -34,6 +34,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ToursDashboardComponent } from './tours-dashboard/tours-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatCarouselModule} from '@ngmodule/material-carousel';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCarouselModule,
+    MatCheckboxModule
   ],
   providers: [ToursService],
   bootstrap: [HelloComponent]

@@ -24,7 +24,7 @@ export class NewTourComponent implements OnInit {
       maxAmount: '',
       availableAmount: '',
       description: '',
-      photoLink: ''
+      mainPhotoLink: ''
     });
   }
 

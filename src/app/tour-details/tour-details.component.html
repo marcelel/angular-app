@@ -1,10 +1,34 @@
-<img [src]="tour.photoLink" style="border-radius: 50%; max-width: 600px;"> <br/>
-{{tour.name}} <br/>
-Kraj: {{tour.country}} <br/>
-Data rozpoczecia: {{tour.startDate.toLocaleString()}} <br/>
-Data zakonczenia: {{tour.endDate.toLocaleString()}} <br/>
-Cena: {{tour.price}} <br/>
-Max ilosc miejsc: {{tour.maxAmount}} <br/>
-Wolne miejsca: {{tour.availableAmount != 0 ? tour.availableAmount : 'Brak miejsc'}} <br/>
-Opis: {{tour.description}} <br/>
-<a href="{{tour.photoLink}}">Link do zdjecia</a><br/>
+<h1>{{tour.name}}</h1>
+
+<div class="photos">
+  <mat-carousel hideArrows color="primary" proportion="30">
+    <mat-carousel-slide *ngFor="let photoLink of tour.photoLinks"
+                        image="{{photoLink}}">
+    </mat-carousel-slide>
+  </mat-carousel>
+</div>
+
+<mat-list>
+  <mat-list-item><b>Price:&nbsp;</b> {{tour.price}} PLN</mat-list-item>
+  <mat-list-item><b>Description:&nbsp;</b> {{tour.description}}</mat-list-item>
+  <mat-list-item><b>Dates:&nbsp;</b></mat-list-item>
+</mat-list>
+
+<mat-grid-list style="padding-bottom: 50px" cols="5" rowHeight="50px">
+  <mat-grid-tile><b>Start</b></mat-grid-tile>
+  <mat-grid-tile><b>End</b></mat-grid-tile>
+  <mat-grid-tile><b>Max</b></mat-grid-tile>
+  <mat-grid-tile><b>Available</b></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <div *ngFor="let tourTerm of tour.tourTerms">
+    <mat-grid-tile>{{tourTerm.startDate}}</mat-grid-tile>
+    <mat-grid-tile>{{tourTerm.endDate}}</mat-grid-tile>
+    <mat-grid-tile>{{tourTerm.maxAmount}}</mat-grid-tile>
+    <mat-grid-tile>{{tourTerm.availableAmount}}</mat-grid-tile>
+    <mat-grid-tile><button mat-stroked-button>Book</button></mat-grid-tile>
+  </div>
+</mat-grid-list>
+
+<button (click)="removeTour()" routerLink="/tours"><mat-icon>delete</mat-icon></button><br/>
+<app-rates [rates]="tour.rates" (rateAddedEmitter)="onRateAdded($event)"></app-rates>

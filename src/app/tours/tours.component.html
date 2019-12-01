@@ -1,10 +1,7 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Tours</h1>
-  <mat-grid-list [cols]="rows | async" rowHeight="600px">
-    <mat-grid-tile *ngFor="let tour of tours">
-      <app-tour [tour]="tour"
-                (tourRemovedEmitter)="onTourRemoved($event)">
-      </app-tour>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+<h1>Tours</h1>
+<mat-grid-list [cols]="rows | async" rowHeight="600px">
+  <mat-grid-tile *ngFor="let tour of tours">
+    <app-tour [tour]="tour">
+    </app-tour>
+  </mat-grid-tile>
+</mat-grid-list>

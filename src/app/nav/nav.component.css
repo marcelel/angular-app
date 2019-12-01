@@ -2,6 +2,10 @@
   height: 100%;
 }
 
+.main-container {
+  margin: 50px;
+}
+
 .sidenav {
   width: 200px;
 }

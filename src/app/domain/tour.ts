@@ -3,12 +3,10 @@ interface Tour {
   id: number;
   name: string;
   country: string;
-  startDate: Date;
-  endDate: Date;
   price: number;
-  maxAmount: number;
-  availableAmount: number;
   description: string;
-  photoLink: string;
+  mainPhotoLink: string;
+  photoLinks: string[];
   rates: Rate[];
+  tourTerms: TourTerm[];
 }
