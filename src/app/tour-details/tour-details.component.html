@@ -8,13 +8,11 @@
   </mat-carousel>
 </div>
 
-<mat-list>
-  <mat-list-item><b>Price:&nbsp;</b> {{tour.price}} PLN</mat-list-item>
-  <mat-list-item><b>Description:&nbsp;</b> {{tour.description}}</mat-list-item>
-  <mat-list-item><b>Dates:&nbsp;</b></mat-list-item>
-</mat-list>
+<div style="padding-top: 10px"><b>Price:&nbsp;</b> {{tour.price}} PLN</div>
+<div style="padding-top: 10px"><b>Description:&nbsp;</b> {{tour.description}}</div>
+<div style="padding-top: 10px"><b>Dates:&nbsp;</b></div>
 
-<mat-grid-list style="padding-bottom: 50px" cols="5" rowHeight="50px">
+<mat-grid-list style="padding-top: 10px" cols="5" rowHeight="50px">
   <mat-grid-tile><b>Start</b></mat-grid-tile>
   <mat-grid-tile><b>End</b></mat-grid-tile>
   <mat-grid-tile><b>Max</b></mat-grid-tile>
@@ -30,5 +28,10 @@
   </div>
 </mat-grid-list>
 
-<button (click)="removeTour()" routerLink="/tours"><mat-icon>delete</mat-icon></button><br/>
 <app-rates [rates]="tour.rates" (rateAddedEmitter)="onRateAdded($event)"></app-rates>
+
+<div style="padding-top: 30px">
+  <button (click)="removeTour()" routerLink="/tours">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

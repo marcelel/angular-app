@@ -9,20 +9,25 @@ export class RatesComponent implements OnInit {
 
   @Input() rates: Rate[];
   @Output() rateAddedEmitter = new EventEmitter<Rate>();
-  newRate: Rate;
+  mediumRate: number;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.calculateMediumRate();
   }
 
-  setRate(value: number) {
-    this.newRate = {value};
+  addRate(event) {
+    const rate = {value: event.newValue};
+    // this.rates.push(rate);
+    this.rateAddedEmitter.emit(rate);
+    this.ngOnInit();
   }
 
-  addRate() {
-    // this.rates.push(this.newRate);
-    this.rateAddedEmitter.emit(this.newRate);
+  calculateMediumRate() {
+    const sum = this.rates.map(rate => rate.value).reduce((acc, value) => acc + value);
+    this.mediumRate = sum / this.rates.length;
+    return this.mediumRate;
   }
 }

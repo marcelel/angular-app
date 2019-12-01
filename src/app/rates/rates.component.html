@@ -1,9 +1,21 @@
-Oceny: <br/>
-<app-rate *ngFor="let rate of rates"
-          [rate]="rate">>
-</app-rate>
-Dodaj ocene <br/>
-  <input type="radio" name="gender" value="1" (click)="setRate(1)">1<br/>
-  <input type="radio" name="gender" value="2" (click)="setRate(2)">2<br/>
-  <input type="radio" name="gender" value="3" (click)="setRate(3)">3<br/>
-  <input type="submit" value="Submit" (click)="addRate()"><br/>
+<div style="padding-top: 10px;">
+  <b>Rate:&nbsp;</b> {{calculateMediumRate()}}
+  <star-rating value="{{calculateMediumRate()}}"
+               checkedcolor="black"
+               uncheckedcolor="grey"
+               size="30px"
+               readonly="true">
+  </star-rating>
+  <bar-rating [(rate)]="mediumRate" [max]="5"></bar-rating>
+</div>
+
+<div style="padding-top: 10px;">
+  <b>Add rate:&nbsp;</b>
+  <star-rating value="0"
+               checkedcolor="black"
+               uncheckedcolor="grey"
+               size="30px"
+               readonly="false"
+               (rate)="addRate($event)">
+  </star-rating>
+</div>

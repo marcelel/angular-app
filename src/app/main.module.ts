@@ -35,6 +35,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ToursDashboardComponent } from './tours-dashboard/tours-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatCarouselModule} from '@ngmodule/material-carousel';
+import {RatingModule} from 'ng-starrating';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import {MatCarouselModule} from '@ngmodule/material-carousel';
     MatCardModule,
     MatGridListModule,
     MatCarouselModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    RatingModule,
+    BarRatingModule
   ],
   providers: [ToursService],
   bootstrap: [HelloComponent]

@@ -24,6 +24,8 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "@ngmodule/material-carousel": "^0.5.1",
     "angular-in-memory-web-api": "^0.9.0",
+    "ng-starrating": "^1.0.7",
+    "ngx-bar-rating": "^1.1.0",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.10.0",

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,11 @@ export class ToursService {
       tap((newTour) => console.log(`added hero w/ id=${newTour.id}`))
       // catchError(err => of('{tour}' as Tour))
     );
+  }
+
+  editTour(tour: Tour): Observable<Tour> {
+    return this.http.put<Tour>(this.toursUrl, tour, this.httpOptions);
+
   }
 
   deleteTour(tour: Tour) {
