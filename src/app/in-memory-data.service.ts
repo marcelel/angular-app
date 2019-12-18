@@ -285,7 +285,7 @@ export class InMemoryDataService implements InMemoryDbService {
         mainPhotoLink: 'https://i.wpimg.pl/O/644x430/d.wpimg.pl/789201725--821815787/santorini.jpg',
         photoLinks: [
           'https://podroze.smcloud.net/t/photos/t/144732/zatoka-wraku_1139626.jpg',
-          'https://www.sunfun.pl/images/content/country/grecja__w1160h520-scr_1294f4.jpg',
+          'https://www.sunfun.pl/images/content/country/grecja__w1160h520-scr_1294f4.jpg ',
           'https://i.wpimg.pl/O/644x430/d.wpimg.pl/789201725--821815787/santorini.jpg',
           'https://i.content4travel.com/cms/img/u/kraj/1/grecja_0.jpg?version=87'
         ],

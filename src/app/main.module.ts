@@ -1,18 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { HelloRoutingModule } from './hello-routing.module';
-import { HelloComponent } from './hello.component';
-import { ToursComponent } from './tours/tours.component';
-import { HeadingComponent } from './heading-component/heading.component';
-import { TourComponent } from './tour/tour.component';
-import { RateComponent } from './rate/rate.component';
-import { RatesComponent } from './rates/rates.component';
-import { NewTourComponent } from './new-tour/new-tour.component';
+import {HelloRoutingModule} from './hello-routing.module';
+import {HelloComponent} from './hello.component';
+import {ToursComponent} from './tours/tours.component';
+import {HeadingComponent} from './heading-component/heading.component';
+import {TourComponent} from './tour/tour.component';
+import {RateComponent} from './rate/rate.component';
+import {RatesComponent} from './rates/rates.component';
+import {NewTourComponent} from './new-tour/new-tour.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { CartComponent } from './cart/cart.component';
+import {CartComponent} from './cart/cart.component';
 import {ToursService} from './tours/tours.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCheckboxModule, MatExpansionModule,
   MatIconModule,
@@ -21,22 +21,22 @@ import {
   MatSidenavModule, MatSliderModule,
   MatToolbarModule
 } from '@angular/material';
-import { NavComponent } from './nav/nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { TourDetailsComponent } from './tour-details/tour-details.component';
+import {NavComponent} from './nav/nav.component';
+import {LayoutModule} from '@angular/cdk/layout';
+import {TourDetailsComponent} from './tour-details/tour-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-import { AddressFormComponent } from './address-form/address-form.component';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatCardModule } from '@angular/material/card';
-import { ToursDashboardComponent } from './tours-dashboard/tours-dashboard.component';
-import { MatGridListModule } from '@angular/material/grid-list';
+import {InMemoryDataService} from './in-memory-data.service';
+import {AddressFormComponent} from './address-form/address-form.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCardModule} from '@angular/material/card';
+import {ToursDashboardComponent} from './tours-dashboard/tours-dashboard.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCarouselModule} from '@ngmodule/material-carousel';
 import {RatingModule} from 'ng-starrating';
-import { BarRatingModule } from "ngx-bar-rating";
+import {BarRatingModule} from 'ngx-bar-rating';
 
 @NgModule({
   declarations: [
@@ -84,4 +84,5 @@ import { BarRatingModule } from "ngx-bar-rating";
   providers: [ToursService],
   bootstrap: [HelloComponent]
 })
-export class MainModule { }
+export class MainModule {
+}
