@@ -46,6 +46,8 @@ import {environment} from "../environments/environment";
 import { LoginComponent } from './login/login.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {AuthGuard} from "./auth.guard";
+import { RegisterComponent } from './register/register.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import {AuthGuard} from "./auth.guard";
     CountryPipe,
     PriceFromPipe,
     PriceToPipe,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -96,8 +99,9 @@ import {AuthGuard} from "./auth.guard";
     BarRatingModule,
     MatExpansionModule,
     FormsModule,
-    MatProgressSpinnerModule
-  ],
+    MatProgressSpinnerModule,
+    AngularFirestoreModule
+],
   providers: [ToursService, AuthGuard],
   bootstrap: [HelloComponent]
 })

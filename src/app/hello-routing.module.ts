@@ -6,11 +6,13 @@ import {TourDetailsComponent} from './tour-details/tour-details.component';
 import {NewTourComponent} from './new-tour/new-tour.component';
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./auth.guard";
+import {RegisterComponent} from "./register/register.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'tours', canActivate:[AuthGuard], component: ToursComponent},
   { path: 'tours/:id', canActivate:[AuthGuard], component: TourDetailsComponent},
   { path: 'new-tour', canActivate:[AuthGuard], component: NewTourComponent},
