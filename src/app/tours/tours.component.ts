@@ -11,16 +11,28 @@ import {map} from 'rxjs/operators';
 export class ToursComponent implements OnInit {
 
   tours: Tour[];
+  countries: String[];
+  country: '';
+  priceFrom: 0;
+  priceTo: 0;
   rows = this.breakpointObserver.observe('(max-width: 1200px)').pipe(
     map(({ matches }) => matches ? 1 : 3)
   );
 
   constructor(private toursService: ToursService, private breakpointObserver: BreakpointObserver) {
     this.tours = [];
+    this.countries = [];
   }
 
   ngOnInit() {
-    this.toursService.getTours().subscribe(tours => this.tours = tours);
+    this.toursService.getTours().subscribe(tours => {
+      this.tours = tours;
+      this.initCountries(tours);
+    });
+  }
+
+  initCountries(tours: Tour[]) {
+    this.countries = tours.map(tour => tour.country);
   }
 
   onTourRemoved(tour: Tour) {

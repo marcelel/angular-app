@@ -9,7 +9,7 @@ import {TourComponent} from './tour/tour.component';
 import {RateComponent} from './rate/rate.component';
 import {RatesComponent} from './rates/rates.component';
 import {NewTourComponent} from './new-tour/new-tour.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CartComponent} from './cart/cart.component';
 import {ToursService} from './tours/tours.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -37,6 +37,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCarouselModule} from '@ngmodule/material-carousel';
 import {RatingModule} from 'ng-starrating';
 import {BarRatingModule} from 'ngx-bar-rating';
+import { CountryPipe } from './country.pipe';
+import { PriceFromPipe } from './price-from.pipe';
+import { PriceToPipe } from './price-to.pipe';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import {environment} from "../environments/environment";
+import { LoginComponent } from './login/login.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {AuthGuard} from "./auth.guard";
 
 @NgModule({
   declarations: [
@@ -51,9 +60,15 @@ import {BarRatingModule} from 'ngx-bar-rating';
     NavComponent,
     TourDetailsComponent,
     AddressFormComponent,
-    ToursDashboardComponent
+    ToursDashboardComponent,
+    CountryPipe,
+    PriceFromPipe,
+    PriceToPipe,
+    LoginComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule, // do obsługi autentykacji
     ReactiveFormsModule,
     BrowserModule,
     HelloRoutingModule,
@@ -79,9 +94,11 @@ import {BarRatingModule} from 'ngx-bar-rating';
     MatCheckboxModule,
     RatingModule,
     BarRatingModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FormsModule,
+    MatProgressSpinnerModule
   ],
-  providers: [ToursService],
+  providers: [ToursService, AuthGuard],
   bootstrap: [HelloComponent]
 })
 export class MainModule {

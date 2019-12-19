@@ -12,13 +12,14 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <span>Application Title</span>
+      <span>Travel agency</span>
 
       <!-- This fills the remaining space of the current row -->
       <span class="example-fill-remaining-space"></span>
 
       <mat-icon style="padding: 10px">shopping_cart</mat-icon>
-      <mat-icon style="padding: 10px">account_circle</mat-icon>
+      <mat-icon *ngIf="authService.user == null" style="padding: 10px" routerLink="/login">account_circle</mat-icon>
+      <mat-icon *ngIf="authService.user != null" style="padding: 10px" routerLink="/login" (click)="authService.logout()">exit_to_app</mat-icon>
     </mat-toolbar>
 
 <!--    <app-address-form></app-address-form>-->

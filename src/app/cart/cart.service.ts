@@ -6,7 +6,7 @@ import {ToursService} from '../tours/tours.service';
 })
 export class CartService {
 
-  private reservations: CartTourReservation[];
+  private readonly reservations: CartTourReservation[];
 
   constructor(private toursService: ToursService) {
     this.reservations = [];

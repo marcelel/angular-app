@@ -1,6 +1,34 @@
 <h1>Tours</h1>
+
+<div>
+  <mat-form-field >
+    <mat-label>Country</mat-label>
+    <mat-select [(value)]="country">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let country of countries" [value]="country">
+        {{country}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<table class="example-full-width" cellspacing="0">
+  <tr>
+    <td style="padding-right: 8px;">
+      <mat-form-field class="example-full-width">
+        <input matInput type="number" placeholder="Price from" [(ngModel)]="priceFrom">
+      </mat-form-field>
+    </td>
+    <td style="padding-right: 8px;">
+      <mat-form-field class="example-full-width">
+        <input matInput type="number" placeholder="Price to" [(ngModel)]="priceTo">
+      </mat-form-field>
+    </td>
+  </tr>
+</table>
+
 <mat-grid-list [cols]="rows | async" rowHeight="600px">
-  <mat-grid-tile *ngFor="let tour of tours">
+  <mat-grid-tile *ngFor="let tour of tours | country : country | priceFrom : priceFrom | priceTo : priceTo">
     <app-tour [tour]="tour">
     </app-tour>
   </mat-grid-tile>
