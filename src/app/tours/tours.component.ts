@@ -47,8 +47,4 @@ export class ToursComponent implements OnInit {
     }
     this.toursService.deleteTour(tour);
   }
-
-  onTourAdded(tour: Tour) {
-    this.toursService.addTour(tour).subscribe(newTour => this.tours.push(newTour));
-  }
 }

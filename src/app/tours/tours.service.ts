@@ -26,12 +26,9 @@ export class ToursService {
     return this.firestore.doc('tours/' + id).get();
   }
 
-  addTour(tour: Tour): Observable<Tour> {
+  addTour(tour: Tour) {
     tour.rates = [];
-    return this.http.post<Tour>(this.toursUrl, tour, this.httpOptions).pipe(
-      tap((newTour) => console.log(`added hero w/ id=${newTour.id}`))
-      // catchError(err => of('{tour}' as Tour))
-    );
+    this.firestore.collection('tours').add(tour);
   }
 
   editTour(tour: Tour) {
@@ -40,7 +37,7 @@ export class ToursService {
     return this.firestore.doc('tours/' + id).update(tour);
   }
 
-  deleteTour(tour: Tour): Observable<Tour> {
-    return this.http.delete<Tour>(this.toursUrl + '/' + tour.id, this.httpOptions);
+  deleteTour(tour: Tour) {
+    this.firestore.doc('tours/' + tour.id).delete();
   }
 }

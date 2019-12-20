@@ -51,6 +51,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HistoryComponent } from './history/history.component';
 import {AuthorizationService} from "./authorization.service";
 import {AuthService} from "./auth.service";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -104,8 +106,10 @@ import {AuthService} from "./auth.service";
     MatExpansionModule,
     FormsModule,
     MatProgressSpinnerModule,
-    AngularFirestoreModule
-],
+    AngularFirestoreModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   providers: [ToursService, AuthService, AuthorizationService, AuthGuard],
   bootstrap: [HelloComponent]
 })

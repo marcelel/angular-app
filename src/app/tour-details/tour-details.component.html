@@ -37,7 +37,10 @@
 
 <app-rates [tour]="tour" (rateAddedEmitter)="onRateAdded($event)"></app-rates>
 
-<div style="padding-top: 30px">
+<div *ngIf="isAdmin" style="padding-top: 30px">
+  <button (click)="removeTour()" routerLink="/tours">
+    <mat-icon>edit</mat-icon>
+  </button>
   <button (click)="removeTour()" routerLink="/tours">
     <mat-icon>delete</mat-icon>
   </button>

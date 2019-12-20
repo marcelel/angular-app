@@ -1,14 +1,65 @@
 <form [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
-  <label>nazwa: </label><input name="name" formControlName="name"><br/>
-  <label>kraj: </label><input name="country" formControlName="country"><br/>
-  <label>data rozpoczecia: </label><input name="startDate" formControlName="startDate"><br/>
-  <label>Data zakonczenia: </label><input name="endDate" formControlName="endDate"><br/>
-  <label>Cena: </label><input name="price" formControlName="price"><br/>
-  <label>Max ilosc: </label><input name="maxAmount" formControlName="maxAmount"><br/>
-  <label>Wolne miejsca: </label><input name="availableAmount" formControlName="availableAmount"><br/>
-  <label>Opis: </label><input name="description" formControlName="description"><br/>
-  <label>Link do zdjecia: </label><input name="mainPhotoLink" formControlName="mainPhotoLink"><br/>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Name" formControlName="name" id="name">
+    <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+  </mat-form-field><br/>
 
-  <button type="submit">Send</button>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Country" formControlName="country" id="country">
+    <mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
+  </mat-form-field><br/>
+
+  <mat-form-field>
+    <input type="number" matInput placeholder="Price" formControlName="price" id="price">
+    <mat-error *ngIf="hasError('price', 'required')">Price is required</mat-error>
+  </mat-form-field><br/>
+
+  <mat-form-field>
+    <input type="text" matInput placeholder="Description" formControlName="description" id="description">
+    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+  </mat-form-field><br/>
+
+  <mat-form-field>
+    <input type="text" matInput placeholder="Main photo link" formControlName="mainPhotoLink" id="mainPhotoLink">
+    <mat-error *ngIf="hasError('mainPhotoLink', 'required')">Main photo link is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" matInput placeholder="Photo link 1" formControlName="photoLink1" id="photoLink1">
+    <mat-error *ngIf="hasError('photoLink1', 'required')">Photo link 1 is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" matInput placeholder="Photo link 2" formControlName="photoLink2" id="photoLink2">
+    <mat-error *ngIf="hasError('photoLink2', 'required')">Photo link 2 is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" matInput placeholder="Photo link 3" formControlName="photoLink3" id="photoLink3">
+    <mat-error *ngIf="hasError('photoLink3', 'required')">Photo link 3 is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" matInput placeholder="Photo link 4" formControlName="photoLink4" id="photoLink4">
+    <mat-error *ngIf="hasError('photoLink4', 'required')">Photo link 4 is required</mat-error>
+  </mat-form-field><br/>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="startPicker" formControlName="startDate" placeholder="Start date">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="endPicker" formControlName="endDate" placeholder="End date">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+  </mat-form-field><br/>
+
+  <mat-form-field>
+    <input type="number" matInput placeholder="Max amount" formControlName="maxAmount" id="maxAmount">
+    <mat-error *ngIf="hasError('maxAmount', 'required')">Max amount is required</mat-error>
+  </mat-form-field><br/>
+
+  <button mat-stroked-button type="submit">Send</button>
 </form>
-

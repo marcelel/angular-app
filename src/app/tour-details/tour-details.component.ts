@@ -5,6 +5,8 @@ import {CartService} from '../cart/cart.service';
 import {v4 as uuid} from 'uuid';
 import {AuthService} from "../auth.service";
 import {error} from "util";
+import {map} from "rxjs/operators";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-tour-details',
@@ -14,11 +16,13 @@ import {error} from "util";
 export class TourDetailsComponent implements OnInit {
 
   tour: Tour;
+  isAdmin: boolean;
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute,
               private toursService: ToursService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private firestore: AngularFirestore) {
   }
 
   ngOnInit() {
@@ -27,6 +31,7 @@ export class TourDetailsComponent implements OnInit {
       id: data.id,
       ... data.data()
     });
+    this.checkIsAdmin();
   }
 
   book(term: TourTerm) {
@@ -68,20 +73,21 @@ export class TourDetailsComponent implements OnInit {
     this.toursService.deleteTour(this.tour).subscribe();
   }
 
-    // isAvailable() {
-  //   return this.tour.availableAmount === 0;
-  // }
-
-  // isAnyReserved() {
-  //   return this.tour.availableAmount === this.tour.maxAmount;
-  // }
-  //
-  // getPlusButtonStyle(): string {
-  //   return this.isAvailable() ? 'hidden' : 'visible';
-  // }
-
   onRateAdded(rate: Rate) {
     this.tour.rates.push(rate);
     this.toursService.editTour(this.tour);
+  }
+
+  checkIsAdmin() {
+    this.authService.authState$.pipe(map(state => {
+        if (state !== null) {
+          this.firestore.doc('permissions/' + state.email)
+            .get()
+            .subscribe(value => this.isAdmin = value.get("role") === "ADMIN");
+        }
+        this.isAdmin = false;
+      }
+      )
+    ).subscribe(value => value);
   }
 }
