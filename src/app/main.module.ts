@@ -49,6 +49,8 @@ import {AuthGuard} from "./auth.guard";
 import { RegisterComponent } from './register/register.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HistoryComponent } from './history/history.component';
+import {AuthorizationService} from "./authorization.service";
+import {AuthService} from "./auth.service";
 
 @NgModule({
   declarations: [
@@ -104,7 +106,7 @@ import { HistoryComponent } from './history/history.component';
     MatProgressSpinnerModule,
     AngularFirestoreModule
 ],
-  providers: [ToursService, AuthGuard],
+  providers: [ToursService, AuthService, AuthorizationService, AuthGuard],
   bootstrap: [HelloComponent]
 })
 export class MainModule {

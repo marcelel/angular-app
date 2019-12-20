@@ -68,7 +68,7 @@ export class TourDetailsComponent implements OnInit {
     this.toursService.deleteTour(this.tour).subscribe();
   }
 
-  // isAvailable() {
+    // isAvailable() {
   //   return this.tour.availableAmount === 0;
   // }
 

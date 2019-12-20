@@ -8,7 +8,7 @@
       <a mat-list-item routerLink="/tours">Tours</a>
       <a mat-list-item routerLink="/cart">Cart</a>
       <a mat-list-item routerLink="/history">History</a>
-      <a mat-list-item routerLink="/new-tour">New tour</a>
+      <a *ngIf="isAdmin" mat-list-item routerLink="/new-tour">New tour</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

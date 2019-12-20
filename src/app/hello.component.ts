@@ -6,4 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./hello.component.css']
 })
 export class HelloComponent {
+
+  constructor() {
+  }
 }
