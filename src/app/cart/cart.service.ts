@@ -34,7 +34,10 @@ export class CartService {
 
   private removeReservationFromTour(reservation: CartTourReservation) {
     let tour;
-    this.toursService.getTour(reservation.tourId).subscribe(t => tour = t);
+    this.toursService.getTour(reservation.tourId).subscribe(data => tour = {
+      id: data.id,
+      ... data.data()
+    });
     if (tour != null) {
       const term = tour.terms.find(t => t.id === reservation.tourTermId);
       if (term != null) {

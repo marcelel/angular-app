@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "@ngmodule/material-carousel": "^0.5.1",
     "angular-in-memory-web-api": "^0.9.0",
+    "angularfire2": "^5.2.3",
     "firebase": "^7.6.1",
     "ng-starrating": "^1.0.7",
     "ngx-bar-rating": "^1.1.0",

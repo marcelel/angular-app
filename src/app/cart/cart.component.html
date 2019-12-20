@@ -1,18 +1,16 @@
 <h1>My cart</h1>
-<mat-grid-list style="padding-top: 10px" cols="6" rowHeight="50px">
+<mat-grid-list style="padding-top: 10px" cols="5" rowHeight="50px">
   <mat-grid-tile><b>Name</b></mat-grid-tile>
+  <mat-grid-tile><b>Start</b></mat-grid-tile>
   <mat-grid-tile><b>End</b></mat-grid-tile>
-  <mat-grid-tile><b>Max</b></mat-grid-tile>
-  <mat-grid-tile><b>Amount</b></mat-grid-tile>
   <mat-grid-tile><b>Price</b></mat-grid-tile>
   <mat-grid-tile></mat-grid-tile>
 
   <div *ngFor="let reservation of reservations">
     <mat-grid-tile>{{reservation.name}}</mat-grid-tile>
-    <mat-grid-tile>{{reservation.startDate | date}}</mat-grid-tile>
-    <mat-grid-tile>{{reservation.endDate | date}}</mat-grid-tile>
-    <mat-grid-tile>{{reservation.amount}}</mat-grid-tile>
-    <mat-grid-tile>{{getPriceForReservation(reservation)}} PLN</mat-grid-tile>
+    <mat-grid-tile>{{reservation.startDate.seconds * 1000 | date}}</mat-grid-tile>
+    <mat-grid-tile>{{reservation.endDate.seconds * 1000 | date}}</mat-grid-tile>
+    <mat-grid-tile>{{reservation.price}} PLN</mat-grid-tile>
     <mat-grid-tile>
       <button mat-stroked-button (click)="removeTourReservation(reservation)">Remove</button>
     </mat-grid-tile>

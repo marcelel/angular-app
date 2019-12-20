@@ -40,7 +40,6 @@ export class InMemoryDataService implements InMemoryDbService {
             startDate: new Date(2019, 10, 23),
             endDate: new Date(2019, 10, 30),
             maxAmount: 7,
-            availableAmount: 7
           },
           {
             id: 2,

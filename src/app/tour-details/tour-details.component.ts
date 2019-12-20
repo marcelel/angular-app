@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ToursService} from '../tours/tours.service';
 import {CartService} from '../cart/cart.service';
 import {v4 as uuid} from 'uuid';
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-tour-details',
@@ -15,28 +16,24 @@ export class TourDetailsComponent implements OnInit {
 
   constructor(private cartService: CartService,
               private route: ActivatedRoute,
-              private toursService: ToursService) {
+              private toursService: ToursService,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.toursService.getTour(id).subscribe(tour => this.tour = tour);
+    this.toursService.getTour(id).subscribe(data => this.tour = {
+      id: data.id,
+      ... data.data()
+    });
   }
 
   book(term: TourTerm) {
     if (this.isReservationAvailable(term)) {
-      if (term.reservations == null) {
-        term.reservations = [];
-      }
-
-      const reservation = {id: uuid(), tourId: term.tourId, tourTermId: term.id, amount: 1}; // todo: remove id
+      const reservation = {email: this.authService.user.email};
       term.reservations.push(reservation);
       this.toursService.editTour(this.tour).subscribe();
       const cartReservation = {
-        id: reservation.id,
-        tourId: reservation.tourId,
-        tourTermId: reservation.tourTermId,
-        amount: reservation.amount,
         price: this.tour.price,
         name: this.tour.name,
         startDate: term.startDate,

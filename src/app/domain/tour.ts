@@ -1,6 +1,6 @@
 interface Tour {
 
-  id: number;
+  id: string;
   name: string;
   country: string;
   price: number;

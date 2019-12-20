@@ -25,10 +25,16 @@ export class ToursComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.toursService.getTours().subscribe(tours => {
-      this.tours = tours;
-      this.initCountries(tours);
-    });
+
+    this.toursService.getTours()
+      .subscribe(data => {
+        this.tours = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data()
+          } as Tour;
+        });
+        this.initCountries(this.tours)});
   }
 
   initCountries(tours: Tour[]) {

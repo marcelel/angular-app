@@ -20,8 +20,8 @@
   <mat-grid-tile></mat-grid-tile>
 
   <div *ngFor="let term of tour.terms">
-    <mat-grid-tile>{{term.startDate | date}}</mat-grid-tile>
-    <mat-grid-tile>{{term.endDate | date}}</mat-grid-tile>
+    <mat-grid-tile>{{term.startDate.seconds * 1000 | date}}</mat-grid-tile>
+    <mat-grid-tile>{{term.endDate.seconds * 1000 | date}}</mat-grid-tile>
     <mat-grid-tile>{{term.maxAmount}}</mat-grid-tile>
     <mat-grid-tile>{{getAvailableTermAmount(term)}}</mat-grid-tile>
     <mat-grid-tile>
