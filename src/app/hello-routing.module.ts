@@ -7,6 +7,7 @@ import {NewTourComponent} from './new-tour/new-tour.component';
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./auth.guard";
 import {RegisterComponent} from "./register/register.component";
+import {HistoryComponent} from "./history/history.component";
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'tours', canActivate:[AuthGuard], component: ToursComponent},
   { path: 'tours/:id', canActivate:[AuthGuard], component: TourDetailsComponent},
   { path: 'new-tour', canActivate:[AuthGuard], component: NewTourComponent},
-  { path: 'cart', canActivate:[AuthGuard], component: CartComponent}
+  { path: 'cart', canActivate:[AuthGuard], component: CartComponent},
+  { path: 'history', canActivate:[AuthGuard], component: HistoryComponent}
 ];
 
 @NgModule({

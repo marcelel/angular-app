@@ -25,7 +25,6 @@ export class ToursComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.toursService.getTours()
       .subscribe(data => {
         this.tours = data.map(e => {

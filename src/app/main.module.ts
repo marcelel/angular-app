@@ -48,6 +48,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {AuthGuard} from "./auth.guard";
 import { RegisterComponent } from './register/register.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     PriceFromPipe,
     PriceToPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HistoryComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

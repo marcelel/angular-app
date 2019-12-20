@@ -1,0 +1,14 @@
+<h1>My tours</h1>
+<mat-grid-list style="padding-top: 10px" cols="4" rowHeight="50px">
+  <mat-grid-tile><b>Name</b></mat-grid-tile>
+  <mat-grid-tile><b>Start</b></mat-grid-tile>
+  <mat-grid-tile><b>End</b></mat-grid-tile>
+  <mat-grid-tile><b>Price</b></mat-grid-tile>
+
+  <div *ngFor="let tour of tours">
+    <mat-grid-tile>{{tour.name}}</mat-grid-tile>
+    <mat-grid-tile>{{tour.startDate.seconds * 1000 | date}}</mat-grid-tile>
+    <mat-grid-tile>{{tour.endDate.seconds * 1000 | date}}</mat-grid-tile>
+    <mat-grid-tile>{{tour.price}} PLN</mat-grid-tile>
+  </div>
+</mat-grid-list>
