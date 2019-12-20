@@ -6,7 +6,7 @@
   </bar-rating>
 </div>
 
-<div style="padding-top: 10px;">
+<div *ngIf="userCanRate" style="padding-top: 10px;">
   <b>Add rate:&nbsp;</b>
   <bar-rating [max]="5"
               (rateChange)="addRate($event)">
