@@ -3,5 +3,6 @@ class TourTerm {
   startDate: Date;
   endDate: Date;
   maxAmount: number;
-  reservations: TourReservation[];
+  reservations: string[];
+  bookings: string[];
 }

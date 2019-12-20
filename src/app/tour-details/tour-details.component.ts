@@ -4,6 +4,7 @@ import {ToursService} from '../tours/tours.service';
 import {CartService} from '../cart/cart.service';
 import {v4 as uuid} from 'uuid';
 import {AuthService} from "../auth.service";
+import {error} from "util";
 
 @Component({
   selector: 'app-tour-details',
@@ -30,21 +31,33 @@ export class TourDetailsComponent implements OnInit {
 
   book(term: TourTerm) {
     if (this.isReservationAvailable(term)) {
-      const reservation = {email: this.authService.user.email};
-      term.reservations.push(reservation);
-      this.toursService.editTour(this.tour).subscribe();
       const cartReservation = {
+        tourId: this.tour.id,
         price: this.tour.price,
         name: this.tour.name,
         startDate: term.startDate,
         endDate: term.endDate
       };
       this.cartService.addReservation(cartReservation);
+      term.reservations.push(this.authService.user.email);
+      let id = this.tour.id;
+      this.toursService.editTour(this.tour);
+      this.toursService.getTour(id).subscribe(data => this.tour = {
+        id: data.id,
+        ... data.data()
+      });
     }
   }
 
   getAvailableTermAmount(term: TourTerm) {
-    return term.reservations != null ? term.maxAmount - term.reservations.length : term.maxAmount;
+    let amount = term.maxAmount;
+    if (term.reservations != null) {
+      amount -= term.reservations.length;
+    }
+    if (term.bookings != null) {
+      amount -= term.bookings.length;
+    }
+    return amount;
   }
 
   isReservationAvailable(term: TourTerm) {
@@ -53,6 +66,10 @@ export class TourDetailsComponent implements OnInit {
 
   removeTour() {
     this.toursService.deleteTour(this.tour).subscribe();
+  }
+
+  canUserRateTour() {
+    this.tour.
   }
 
   // isAvailable() {
@@ -69,6 +86,6 @@ export class TourDetailsComponent implements OnInit {
 
   onRateAdded(rate: Rate) {
     this.tour.rates.push(rate);
-    this.toursService.editTour(this.tour).subscribe();
+    this.toursService.editTour(this.tour);
   }
 }

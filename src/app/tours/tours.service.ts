@@ -34,8 +34,10 @@ export class ToursService {
     );
   }
 
-  editTour(tour: Tour): Observable<any> {
-    return this.http.put<Tour>(this.toursUrl, tour, this.httpOptions);
+  editTour(tour: Tour) {
+    let id = tour.id;
+    delete tour.id;
+    return this.firestore.doc('tours/' + id).update(tour);
   }
 
   deleteTour(tour: Tour): Observable<Tour> {

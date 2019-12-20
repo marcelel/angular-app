@@ -18,13 +18,9 @@ export class CartComponent implements OnInit {
     this.reservations = this.cartService.getReservations();
   }
 
-  getPriceForReservation(reservation: CartTourReservation) {
-    return reservation.amount * reservation.price;
-  }
-
   getTotalPrice() {
     return this.reservations != null && this.reservations.length !== 0
-      ? this.reservations.map(reservation => this.getPriceForReservation(reservation)).reduce((acc, price) => acc + price)
+      ? this.reservations.map(reservation => reservation.price).reduce((acc, price) => acc + price)
       : 0;
   }
 
@@ -33,5 +29,10 @@ export class CartComponent implements OnInit {
     this.reservations = this.cartService.getReservations();
     this.ngOnInit();
   }
-  // todo: filter users reservations
+
+  buy() {
+    this.cartService.buy();
+    this.reservations = this.cartService.getReservations();
+    this.ngOnInit();
+  }
 }
